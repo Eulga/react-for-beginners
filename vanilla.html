@@ -8,13 +8,44 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
-    function Title() {
+    let counter = 0;
+    function countUp() {
+      counter++;
+      render();
+    }
+
+    //re-render
+    function render() {
+      ReactDOM.render(<Container />, root);
+    }
+
+    function Container() {
+      return (
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={countUp}>Click me</button>
+        </div>
+      );
+    }
+
+    //JSX
+    /* function Title() {
       return (
         <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
           Hello I'm a title
         </h3>
       );
-    }
+    } */
+    /* const Button = () => (
+      <button
+        style={{ backgroundColor: "tomato" }}
+        onClick={() => console.log("im clicked")}
+      >
+        Click me
+      </button>
+    ); */
+
+    //기초 리액트 문법
     /* const h3 = React.createElement(
       "h3",
       {
@@ -23,15 +54,6 @@
       },
       "Hello I'm a title"
     ); */
-
-    const Button = () => (
-      <button
-        style={{ backgroundColor: "tomato" }}
-        onClick={() => console.log("im clicked")}
-      >
-        Click me
-      </button>
-    );
     /* const btn = React.createElement(
       "button",
       {
@@ -44,13 +66,13 @@
     ); */
 
     //컴포넌트의 첫글자는 무조건 대문자 Class문법과 같은듯함
-    const Container = (
+    /* const Container = () => (
       <div>
         <Title />
         <Button />
       </div>
-    );
+    ); */
     // const container = React.createElement("div", null, [Title, Button]);
-    ReactDOM.render(Container, root);
+    ReactDOM.render(<Container />, root);
   </script>
 </html>
