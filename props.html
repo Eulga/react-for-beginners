@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    //Component
+    // function Btn(props) {
+    function Btn({ ik, big }) {
+      // console.log(props);
+      console.log(ik);
+      return (
+        <button
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+            fontSize: big ? 18 : 16, // scss 같은 느낌
+          }}
+        >
+          {ik}
+        </button>
+      );
+    }
+    function App() {
+      return (
+        // inside of JSX
+        <div>
+          <Btn ik="Save Changes" big={true} />
+          <Btn ik="Continue" big={false} />
+        </div>
+      );
+    }
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
